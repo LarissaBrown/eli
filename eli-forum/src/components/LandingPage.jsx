@@ -1,11 +1,14 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Routes, Route, Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Image }  from 'mui-image'
-import image from "../assets/socialImage.jpg"
+import { Image }  from 'mui-image';
+import image from "../assets/socialImage.jpg";
+import SignInPage from './SignInPage';
+import SignUpPage from './SignUpPage';
 
 export default function LandingPage() {
 
@@ -38,7 +41,6 @@ export default function LandingPage() {
           }}
         >
         <Image src="./src/assets/eliLogo.png" width="30%"/>          
-        
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <Button
               type="submit"
@@ -52,11 +54,8 @@ export default function LandingPage() {
                     backgroundColor: "#BDBDBD"
                 }
             }}
-            onClick={() => {
-                alert('clicked');
-              }}
             >
-              Sign In
+              <Link to="/signin" style={{padding: 5}}>Sign In</Link>
             </Button>
             <Button
               type="submit"
@@ -71,15 +70,18 @@ export default function LandingPage() {
                     backgroundColor: "#B86363"
                 }
             }}
-            onClick={() => {
-                alert('clicked');
-              }}
             >
-              Sign Up
+              <Link to="/signup" style={{padding: 5}}>
+                  Sign Up
+              </Link>
             </Button>
           </Box>
         </Box>
         </Container>
+        <Routes>
+          <Route path="/signup" element={<SignUpPage />}/>
+          <Route path="/signin" element={<SignInPage />}/>
+        </Routes>
         </ThemeProvider>
     )
 

@@ -1,17 +1,19 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+import { Routes, Route, Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Image }  from 'mui-image'
-import image from "../assets/socialImage.jpg"
+import { Image }  from 'mui-image';
+import image from "../assets/socialImage.jpg";
+import SignUpPage from "./SignUpPage";
+import CategoriesPage from './CategoriesPage';
+
 
 
 export default function SignInPage() {
@@ -75,11 +77,10 @@ export default function SignInPage() {
                 mb: 2,
                 width: '50%'
               }}
-              onClick={() => {
-                alert('clicked');
-              }}
             >
-              Sign In
+              <Link to="/categories" style={{padding: 5}}>
+                Sign In
+              </Link>
             </Button>
             <Grid container>
               <Grid item xs>
@@ -88,14 +89,18 @@ export default function SignInPage() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+              <Link to="/signup" style={{padding: 5}}>
+                {"Don't have an account? Sign Up"}
+              </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
         </Container>
+        <Routes>
+          <Route path="/signup" element={<SignUpPage />}/>
+          <Route path="/categories" element={<CategoriesPage />}/>
+        </Routes>
         </ThemeProvider>
     )
 

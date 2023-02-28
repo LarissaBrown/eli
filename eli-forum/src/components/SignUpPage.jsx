@@ -1,18 +1,18 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
+import { Routes, Route, Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Image } from 'mui-image'
-import image from "../assets/socialImage.jpg"
+import { Image } from 'mui-image';
+import image from "../assets/socialImage.jpg";
+import SignInPage from './SignInPage';
+import CategoriesPage from './CategoriesPage';
 
 
 
@@ -87,14 +87,18 @@ export default function SignUpPage() {
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Already have an account? Sign In"}
-                </Link>
+              <Link to="/signin" style={{padding: 5}}>
+                {"Already have an account? Sign In"}
+              </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
       </Container>
+      <Routes>
+        <Route path="/signin" element={<SignInPage />}/>
+        <Route path="/categories" element={<CategoriesPage />}/>
+      </Routes>
     </ThemeProvider>
   )
 
